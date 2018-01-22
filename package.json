@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"nodemon server/server.js --exec babel-node\" \"webpack --config webpack.config.js --watch\"",
-    "test": "mocha --require babel-core/register"
+    "test": "mocha --require babel-core/register --exit"
+
   },
   "repository": {
     "type": "git",
