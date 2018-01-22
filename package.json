@@ -1,7 +1,7 @@
 {
-  "name": "simple-node-server",
+  "name": "ai-playground",
   "version": "1.0.0",
-  "description": "A simple node server with express babel, webpack and mocha",
+  "description": "A place for me to experiment with AI. Base code cloned from my simple-node-server",
   "main": "index.js",
   "private": true,
   "scripts": {
