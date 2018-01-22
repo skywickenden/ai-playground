@@ -4,6 +4,7 @@ import assert from 'assert';
 import '../server/server.js';
 
 import './Matrix.js'
+import './MatrixMath.js'
 
 describe('Node Server', () => {
   it('should return 200', done => {

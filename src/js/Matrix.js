@@ -16,16 +16,15 @@ export default class Matrix {
 
   set(matrixArray) {
     if (Array.isArray(matrixArray) === false) {
-      throw 'matrixArray must be a 2 dimensional array';
+      throw new Error('matrixArray must be a 2 dimensional array');
     }
     for(let i=0; i < matrixArray.length; i++) {
       if (Array.isArray(matrixArray[i]) === false) {
-        throw 'matrixArray must be a 2 dimensional array';
+        throw new Error('matrixArray must be a 2 dimensional array');
       }
       for(let j=0; j < matrixArray[i].length; j++) {
         if (typeof matrixArray[i][j] !== 'number') {
-          throw 'matrixArray must contain numeric values: '
-            + i + ' ' + ' ' + j + ' ' + typeof matrixArray[i][j];
+          throw new Error('matrixArray must contain numeric values');
         }
         this.data[i][j] = matrixArray[i][j];
       }
@@ -48,7 +47,7 @@ export default class Matrix {
   }
 
   addElementWise(matrixAddend) {
-    const result = MatrixMath.addScalar(this, matrixAddend);
+    const result = MatrixMath.addElementWise(this, matrixAddend);
     this.data = result.data;
   }
 
@@ -58,12 +57,12 @@ export default class Matrix {
   }
 
   multiplyScalar(multiplicand) {
-    const result = MatrixMath.addScalar(this, multiplicand);
+    const result = MatrixMath.multiplyScalar(this, multiplicand);
     this.data = result.data;
   }
 
   multiplyElementWise(matrixMultiplicand) {
-    const result = MatrixMath.addScalar(this, matrixMultiplicand);
+    const result = MatrixMath.multiplyElementWise(this, matrixMultiplicand);
     this.data = result.data;
   }
 }

@@ -4,7 +4,7 @@ export default class MatrixMath {
 
   static validateMatrix(matrix) {
     if (matrix instanceof Matrix === false) {
-      throw 'Not a valid Matrix';
+      throw new Error('Not a valid Matrix');
     }
   }
 
@@ -20,11 +20,12 @@ export default class MatrixMath {
 
   static validateMatrixSizesEqual(matrixA, matrixB) {
     if (matrixA.columns !== matrixB.columns) {
-      throw 'Column sizes of the two matrixes must be equal.';
+      throw new Error('Column sizes of the two matrixes must be equal');
     }
     if (matrixA.rows !== matrixB.rows) {
-      throw 'Row sizes of the two matrixes must be equal.';
+      throw new Error('Row sizes of the two matrixes must be equal');
     }
+    return true;
   }
 
   static add(matrixA, addend) {
@@ -37,13 +38,13 @@ export default class MatrixMath {
       return MatrixMath.addElementWise(matrixA, addend);
     }
 
-    throw 'addend must be a number.';
+    throw new Error('addend must be a number.');
   }
 
   static addScalar(matrixA, addend) {
     MatrixMath.validateMatrix(matrixA);
     if (typeof addend !== 'number') {
-      throw 'addend must be a number.';
+      throw new Error('addend must be a number.');
     }
     const result = new Matrix(matrixA.rows, matrixA.columns);
     for (let i = 0; i < result.rows; i++) {
@@ -79,13 +80,13 @@ export default class MatrixMath {
       return MatrixMath.multiplyElementWise(matrixA, multiplicand);
     }
 
-    throw 'multiplicand must be a number.';
+    throw new Error('multiplicand must be a number.');
   }
 
   static multiplyScalar(matrixA, multiplicand) {
     MatrixMath.validateMatrix(matrixA);
     if (typeof multiplicand !== 'number') {
-      throw 'multiplicand must be a number.';
+      throw new Error('multiplicand must be a number.');
     }
     const result = new Matrix(matrixA.rows, matrixA.columns);
     for (let i = 0; i < result.rows; i++) {
