@@ -142,5 +142,15 @@ export default class MatrixMath {
     return result;
   }
 
+  static map(matrix, func) {
+    MatrixMath.validateMatrix(matrix);
+    const result = new Matrix(matrix.rows, matrix.columns);
+    for (let i = 0; i < result.rows; i++) {
+      for (let j = 0; j < result.columns; j++) {
+        result.data[i][j] = func(matrix.data[i][j]);
+      }
+    }
+    return result;
+  }
 
 }

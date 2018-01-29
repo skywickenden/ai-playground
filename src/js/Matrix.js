@@ -86,4 +86,9 @@ export default class Matrix {
     this.columns = result.columns;
     this.rows = result.rows;
   }
+
+  map(func) {
+    const result = MatrixMath.map(this, func);
+    this.data = result.data;
+  }
 }

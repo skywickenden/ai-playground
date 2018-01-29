@@ -301,4 +301,36 @@ describe('Matrix', () => {
       should.equal(matrix1.data[3], undefined);
     });
   });
+
+
+
+  describe('map', () => {
+    const matrix1 = new Matrix(2,3);
+    const matrix1Array = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const answer = [
+      [2, 4, 6],
+      [8, 10, 12],
+    ];
+    const mapFunction = (value) => { return value * 2; };
+    it('Check if a map of a matrix is correct', () => {
+      matrix1.set(matrix1Array);
+      matrix1.map(mapFunction);
+      matrix1.data.should.be.an.Array;
+      matrix1.rows.should.equal(2);
+      matrix1.columns.should.equal(3);
+      matrix1.data[0].should.be.an.Array;
+      matrix1.data[0][0].should.equal(answer[0][0]);
+      matrix1.data[0][1].should.equal(answer[0][1]);
+      matrix1.data[0][2].should.equal(answer[0][2]);
+      matrix1.data[1].should.be.an.Array;
+      matrix1.data[1][0].should.equal(answer[1][0]);
+      matrix1.data[1][1].should.equal(answer[1][1]);
+      matrix1.data[1][2].should.equal(answer[1][2]);
+      should.equal(matrix1.data[1][3], undefined);
+      should.equal(matrix1.data[2], undefined);
+    });
+  });
 });
