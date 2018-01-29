@@ -231,4 +231,68 @@ describe('MatrixMath', () => {
     });
   });
 
+  describe('product', () => {
+    const matrix1 = new Matrix(2,3);
+    const matrix1Array = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const matrix2 = new Matrix(3,2);
+    const matrix2Array = [
+      [5, 6],
+      [8, 9],
+      [11, 12],
+    ];
+    const answer = [
+      [54, 60],
+      [126, 141],
+    ];
+    it('Check if the product of two matrixes is correct', () => {
+      matrix1.set(matrix1Array);
+      matrix2.set(matrix2Array);
+      const result = MatrixMath.product(matrix1, matrix2);
+      result.data.should.be.an.Array;
+      result.rows.should.equal(2);
+      result.columns.should.equal(2);
+      result.data[0].should.be.an.Array;
+      result.data[0][0].should.equal(answer[0][0]);
+      result.data[0][1].should.equal(answer[0][1]);
+      result.data[1][0].should.equal(answer[1][0]);
+      result.data[1][1].should.equal(answer[1][1]);
+      should.equal(result.data[1][2], undefined);
+      should.equal(result.data[2], undefined);
+    });
+  });
+
+  describe('transpose', () => {
+    const matrix1 = new Matrix(2,3);
+    const matrix1Array = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const answer = [
+      [1, 4],
+      [2, 5],
+      [3, 6],
+    ];
+    it('Check if the transpose of a matrix is correct', () => {
+      matrix1.set(matrix1Array);
+      const result = MatrixMath.transpose(matrix1);
+      result.data.should.be.an.Array;
+      result.rows.should.equal(3);
+      result.columns.should.equal(2);
+      result.data[0].should.be.an.Array;
+      result.data[0][0].should.equal(answer[0][0]);
+      result.data[0][1].should.equal(answer[0][1]);
+      result.data[1].should.be.an.Array;
+      result.data[1][0].should.equal(answer[1][0]);
+      result.data[1][1].should.equal(answer[1][1]);
+      result.data[2].should.be.an.Array;
+      result.data[2][0].should.equal(answer[2][0]);
+      result.data[2][1].should.equal(answer[2][1]);
+      should.equal(result.data[1][2], undefined);
+      should.equal(result.data[3], undefined);
+    });
+  });
+
 });

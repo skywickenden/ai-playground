@@ -65,4 +65,18 @@ export default class Matrix {
     const result = MatrixMath.multiplyElementWise(this, matrixMultiplicand);
     this.data = result.data;
   }
+
+  product(matrixProductand) {
+    const result = MatrixMath.product(this, matrixProductand);
+    this.data = result.data;
+    this.columns = result.columns;
+    this.rows = result.rows;
+  }
+
+  transpose() {
+    const result = MatrixMath.transpose(this);
+    this.data = result.data;
+    this.columns = result.columns;
+    this.rows = result.rows;
+  }
 }

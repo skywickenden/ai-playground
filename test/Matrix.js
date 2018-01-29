@@ -223,4 +223,67 @@ describe('Matrix', () => {
     });
   });
 
+  describe('product', () => {
+    const matrix1 = new Matrix(2,3);
+    const matrix1Array = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const matrix2 = new Matrix(3,2);
+    const matrix2Array = [
+      [5, 6],
+      [8, 9],
+      [11, 12],
+    ];
+    const answer = [
+      [54, 60],
+      [126, 141],
+    ];
+    it('Check if the product of two matrixes is correct', () => {
+      matrix1.set(matrix1Array);
+      matrix2.set(matrix2Array);
+      matrix1.product(matrix2);
+      matrix1.data.should.be.an.Array;
+      matrix1.rows.should.equal(2);
+      matrix1.columns.should.equal(2);
+      matrix1.data[0].should.be.an.Array;
+      matrix1.data[0][0].should.equal(answer[0][0]);
+      matrix1.data[0][1].should.equal(answer[0][1]);
+      matrix1.data[1][0].should.equal(answer[1][0]);
+      matrix1.data[1][1].should.equal(answer[1][1]);
+      should.equal(matrix1.data[1][2], undefined);
+      should.equal(matrix1.data[2], undefined);
+    });
+  });
+
+  describe('transpose', () => {
+    const matrix1 = new Matrix(2,3);
+    const matrix1Array = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const answer = [
+      [1, 4],
+      [2, 5],
+      [3, 6],
+    ];
+    it('Check if the transpose of a matrix is correct', () => {
+      matrix1.set(matrix1Array);
+      matrix1.transpose();
+      matrix1.data.should.be.an.Array;
+      matrix1.rows.should.equal(3);
+      matrix1.columns.should.equal(2);
+      matrix1.data[0].should.be.an.Array;
+      matrix1.data[0][0].should.equal(answer[0][0]);
+      matrix1.data[0][1].should.equal(answer[0][1]);
+      matrix1.data[1].should.be.an.Array;
+      matrix1.data[1][0].should.equal(answer[1][0]);
+      matrix1.data[1][1].should.equal(answer[1][1]);
+      matrix1.data[2].should.be.an.Array;
+      matrix1.data[2][0].should.equal(answer[2][0]);
+      matrix1.data[2][1].should.equal(answer[2][1]);
+      should.equal(matrix1.data[1][2], undefined);
+      should.equal(matrix1.data[3], undefined);
+    });
+  });
 });

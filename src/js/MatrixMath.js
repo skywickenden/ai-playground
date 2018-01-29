@@ -111,5 +111,36 @@ export default class MatrixMath {
     return result;
   }
 
+  static product(matrixA, matrixB) {
+    MatrixMath.validateMatrix(matrixA);
+    MatrixMath.validateMatrix(matrixB);
+    if (matrixA.rows !== matrixB.columns) {
+      throw new Error('The row size of matrixA must equal the column size of matrixB');
+    }
+    if (matrixA.columns !== matrixB.rows) {
+      throw new Error('The row size of matrixB must equal the column size of matrixA');
+    }
+    const result = new Matrix(matrixA.rows, matrixB.columns);
+    for (let i = 0; i < result.rows; i++) {
+      for (let j = 0; j < result.columns; j++) {
+        for (let k = 0; k < matrixB.rows; k++) {
+          result.data[i][j] += matrixA.data[i][k] * matrixB.data[k][j];
+        }
+      }
+    }
+    return result;
+  }
+
+  static transpose(matrix) {
+    MatrixMath.validateMatrix(matrix);
+    const result = new Matrix(matrix.columns, matrix.rows);
+    for (let i = 0; i < result.rows; i++) {
+      for (let j = 0; j < result.columns; j++) {
+        result.data[i][j] = matrix.data[j][i];
+      }
+    }
+    return result;
+  }
+
 
 }
