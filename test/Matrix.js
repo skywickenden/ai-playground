@@ -1,4 +1,5 @@
 import should from 'should';
+import assert from 'assert';
 
 import Matrix from '../src/js/Matrix.js';
 
@@ -14,6 +15,20 @@ describe('Matrix', () => {
       matrix.data[2][3].should.equal(0);
       should.equal(matrix.data[2][4], undefined);
       should.equal(matrix.data[3], undefined);
+    });
+    it('Invalid rows value should throw an error', () => {
+      assert.throws(
+        () => {const matrix = new Matrix(3.4, 4);},
+        Error,
+        'rows must be an integer'
+      );
+    });
+    it('Invalid columns value should throw an error', () => {
+      assert.throws(
+        () => {const matrix = new Matrix(3, 't');},
+        Error,
+        'columns must be an integer'
+      );
     });
   });
 

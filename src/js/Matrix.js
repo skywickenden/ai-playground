@@ -2,6 +2,13 @@ import MatrixMath from './MatrixMath.js';
 
 export default class Matrix {
   constructor(rows, columns) {
+    if (Number.isInteger(rows) === false) {
+      throw new Error('rows must be an integer');
+    }
+    if (Number.isInteger(columns) === false) {
+      throw new Error('columns must be an integer');
+    }
+
     this.rows = rows;
     this.columns = columns;
     this.data = [];
