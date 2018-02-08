@@ -66,6 +66,26 @@ describe('Matrix', () => {
     });
   });
 
+  describe('toArray', () => {
+    const matrix = new Matrix(2,3);
+    const matrixArray = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    it('Check if a matrix converts to an Array', () => {
+      matrix.set(matrixArray);
+      const arr = matrix.toArray();
+      arr.should.be.an.Array;
+      arr[0].should.equal(1);
+      arr[1].should.equal(2);
+      arr[2].should.equal(3);
+      arr[3].should.equal(4);
+      arr[4].should.equal(5);
+      arr[5].should.equal(6);
+      should.equal(arr[6], undefined);
+    });
+  });
+
   describe('add', () => {
     const matrix = new Matrix(2,3);
     const matrixArray = [

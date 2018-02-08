@@ -38,6 +38,16 @@ export default class Matrix {
     }
   }
 
+  toArray() {
+    const arr = [];
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.columns; j++) {
+        arr.push(this.data[i][j]);;
+      }
+    }
+    return arr;
+  }
+
   randomize() {
     const result = MatrixMath.randomize(this);
     this.data = result.data;
