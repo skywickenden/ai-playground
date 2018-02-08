@@ -6,20 +6,28 @@ let brain;
 const sketch = (p) => {
   let gray = 0;
   p.setup = function () {
+
+    const nn = new NeuralNetwork(2, 2, 1);
+
+    let input = [1, 0];
+
+    let output = nn.feedforward(input);
+    console.log(output);
+
     // p.createCanvas(600, 400);
-    console.log('loaded 7');
-    brain = new NeuralNetwork(3, 3, 1);
-    console.log(brain);
-    let testMatrix = new Matrix(3, 2);
-    let testMatrix2 = new Matrix(3, 2);
-
-    testMatrix = MatrixMath.randomize(testMatrix);
-    testMatrix2 = MatrixMath.randomize(testMatrix2);
-    console.table(testMatrix.data);
-    console.table(testMatrix2.data);
-
-    testMatrix.randomize();
-    console.table(testMatrix.data);
+    // console.log('loaded 7');
+    // brain = new NeuralNetwork(3, 3, 1);
+    // console.log(brain);
+    // let testMatrix = new Matrix(3, 2);
+    // let testMatrix2 = new Matrix(3, 2);
+    //
+    // testMatrix = MatrixMath.randomize(testMatrix);
+    // testMatrix2 = MatrixMath.randomize(testMatrix2);
+    // console.table(testMatrix.data);
+    // console.table(testMatrix2.data);
+    //
+    // testMatrix.randomize();
+    // console.table(testMatrix.data);
   }
 
   p.draw = function () {
