@@ -12,7 +12,7 @@ export default class MatrixMath {
     MatrixMath.validateMatrix(matrix);
     for (let i = 0; i < matrix.rows; i++) {
       for (let j = 0; j < matrix.columns; j++) {
-        matrix.data[i][j] = Math.floor(Math.random() * 10);
+        matrix.data[i][j] = Math.floor(Math.random() * 2 - 1); // -1 to 1
       }
     }
     return matrix;
@@ -26,6 +26,14 @@ export default class MatrixMath {
       throw new Error('Row sizes of the two matrixes must be equal');
     }
     return true;
+  }
+
+  static fromArray(arr) {
+    const matrix = new Matrix(arr.length, 1);
+    for (let i = 0; i < arr.length; i++) {
+      matrix.data[i][0] = arr[i];
+    }
+    return matrix;
   }
 
   static add(matrixA, addend) {
@@ -114,9 +122,6 @@ export default class MatrixMath {
   static product(matrixA, matrixB) {
     MatrixMath.validateMatrix(matrixA);
     MatrixMath.validateMatrix(matrixB);
-    if (matrixA.rows !== matrixB.columns) {
-      throw new Error('The row size of matrixA must equal the column size of matrixB');
-    }
     if (matrixA.columns !== matrixB.rows) {
       throw new Error('The row size of matrixB must equal the column size of matrixA');
     }

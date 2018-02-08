@@ -57,6 +57,20 @@ describe('MatrixMath', () => {
     });
   });
 
+  describe('fromArray', () => {
+    const arr = [1, 2, 3];
+    it('Check if a matrix is created from an array', () => {
+      const matrix = MatrixMath.fromArray(arr);
+      matrix.should.be.an.instanceOf(Matrix);
+      matrix.data.should.be.an.Array;
+      matrix.data[0].should.be.an.Array;
+      matrix.data[0][0].should.equal(1);
+      matrix.data[1][0].should.equal(2);
+      matrix.data[2][0].should.equal(3);
+      should.equal(matrix.data[3], undefined);
+    });
+  });
+
   describe('add', () => {
     const matrix = new Matrix(2,3);
     const matrixArray = [
