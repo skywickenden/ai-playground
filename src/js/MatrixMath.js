@@ -77,6 +77,46 @@ export default class MatrixMath {
     return result;
   }
 
+  static subtract(matrixA, addend) {
+    MatrixMath.validateMatrix(matrixA);
+
+    if (typeof addend === 'number') {
+      return MatrixMath.subtractScalar(matrixA, addend);
+    }
+    if (addend instanceof Matrix) {
+      return MatrixMath.subtractElementWise(matrixA, addend);
+    }
+
+    throw new Error('addend must be a number.');
+  }
+
+  static subtractScalar(matrixA, subdend) {
+    MatrixMath.validateMatrix(matrixA);
+    if (typeof subdend !== 'number') {
+      throw new Error('subdend must be a number.');
+    }
+    const result = new Matrix(matrixA.rows, matrixA.columns);
+    for (let i = 0; i < result.rows; i++) {
+      for (let j = 0; j < result.columns; j++) {
+        result.data[i][j] = matrixA.data[i][j] - subdend;
+      }
+    }
+    return result;
+  }
+
+  static subtractElementWise(matrixA, matrixB) {
+    MatrixMath.validateMatrix(matrixA);
+    MatrixMath.validateMatrix(matrixB);
+    MatrixMath.validateMatrixSizesEqual(matrixA, matrixB);
+
+    const result = new Matrix(matrixA.rows, matrixA.columns);
+    for (let i = 0; i < result.rows; i++) {
+      for (let j = 0; j < result.columns; j++) {
+        result.data[i][j] = matrixA.data[i][j] - matrixB.data[i][j];
+      }
+    }
+    return result;
+  }
 
   static multiply(matrixA, multiplicand) {
     MatrixMath.validateMatrix(matrixA);

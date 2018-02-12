@@ -172,6 +172,101 @@ describe('Matrix', () => {
     });
   });
 
+  describe('subtract', () => {
+    const matrix = new Matrix(2,3);
+    const matrixArray = [
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+    const matrixArray2 = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    it('Check if subtracting a scalar is correct', () => {
+      matrix.set(matrixArray);
+      matrix.subtract(3);
+      matrix.data.should.be.an.Array;
+      matrix.data[0].should.be.an.Array;
+      matrix.data[0][0].should.equal(1);
+      matrix.data[0][1].should.equal(2);
+      matrix.data[0][2].should.equal(3);
+      matrix.data[1][0].should.equal(4);
+      matrix.data[1][1].should.equal(5);
+      matrix.data[1][2].should.equal(6);
+      should.equal(matrix.data[1][3], undefined);
+      should.equal(matrix.data[2], undefined);
+    });
+
+    const matrix2 = new Matrix(2,3);
+    const matrix3 = new Matrix(2,3);
+    it('Check if subtracting an elementwise matrix is correct', () => {
+      matrix2.set(matrixArray);
+      matrix3.set(matrixArray2);
+      matrix2.subtract(matrix3);
+      matrix2.data.should.be.an.Array;
+      matrix2.data[0].should.be.an.Array;
+      matrix2.data[0][0].should.equal(3);
+      matrix2.data[0][1].should.equal(3);
+      matrix2.data[0][2].should.equal(3);
+      matrix2.data[1][0].should.equal(3);
+      matrix2.data[1][1].should.equal(3);
+      matrix2.data[1][2].should.equal(3);
+      should.equal(matrix2.data[1][3], undefined);
+      should.equal(matrix2.data[2], undefined);
+    });
+  });
+
+  describe('subtract scalar', () => {
+    const matrix = new Matrix(2,3);
+    const matrixArray = [
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+    it('Check if subtracting a scalar is correct', () => {
+      matrix.set(matrixArray);
+      matrix.subtractScalar(3);
+      matrix.data.should.be.an.Array;
+      matrix.data[0].should.be.an.Array;
+      matrix.data[0][0].should.equal(1);
+      matrix.data[0][1].should.equal(2);
+      matrix.data[0][2].should.equal(3);
+      matrix.data[1][0].should.equal(4);
+      matrix.data[1][1].should.equal(5);
+      matrix.data[1][2].should.equal(6);
+      should.equal(matrix.data[1][3], undefined);
+      should.equal(matrix.data[2], undefined);
+    });
+  });
+
+  describe('subtractElementWise', () => {
+    const matrix = new Matrix(2,3);
+    const matrixArray = [
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+    const matrixArray2 = [
+      [1, 2, 3],
+      [4, 5, 6],
+    ];
+    const matrix2 = new Matrix(2,3);
+    const matrix3 = new Matrix(2,3);
+    it('Check if subtracting an elementwise matrix is correct', () => {
+      matrix2.set(matrixArray);
+      matrix3.set(matrixArray2);
+      matrix2.subtractElementWise(matrix3);
+      matrix2.data.should.be.an.Array;
+      matrix2.data[0].should.be.an.Array;
+      matrix2.data[0][0].should.equal(3);
+      matrix2.data[0][1].should.equal(3);
+      matrix2.data[0][2].should.equal(3);
+      matrix2.data[1][0].should.equal(3);
+      matrix2.data[1][1].should.equal(3);
+      matrix2.data[1][2].should.equal(3);
+      should.equal(matrix2.data[1][3], undefined);
+      should.equal(matrix2.data[2], undefined);
+    });
+  });
+
   describe('multiply', () => {
     const matrix = new Matrix(2,3);
     const matrixArray = [

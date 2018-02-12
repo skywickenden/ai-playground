@@ -68,6 +68,21 @@ export default class Matrix {
     this.data = result.data;
   }
 
+  subtract(addend) {
+    const result = MatrixMath.subtract(this, addend);
+    this.data = result.data;
+  }
+
+  subtractScalar(addend) {
+    const result = MatrixMath.subtractScalar(this, addend);
+    this.data = result.data;
+  }
+
+  subtractElementWise(matrixAddend) {
+    const result = MatrixMath.subtractElementWise(this, matrixAddend);
+    this.data = result.data;
+  }
+
   multiply(multiplicand) {
     const result = MatrixMath.multiply(this, multiplicand);
     this.data = result.data;
